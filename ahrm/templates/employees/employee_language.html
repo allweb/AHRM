@@ -1,0 +1,89 @@
+<br/>
+{%if status%}
+	<font color="red"><b>
+	  {% if lang_error %}
+	     <label for="id_name">Language</label>: This field is required.<br/>
+	  {% endif %}
+	  {% if form.errors %}
+	     {% for field in form %}
+	        {% if field.errors %}
+	           {% for error in  field.errors %}
+	            {{ field.label_tag }}: {{ error }}<br/>
+	           {% endfor %}
+	        {% endif %}
+	     {% endfor %}
+	  {% endif %}
+	  
+	</b></font>
+	<form action="/employee/languages/save" method="POST">
+		<table class="ahrmtable">
+			<thead>
+				<th colspan="4" align="left">Employee language</th>
+			</thead>
+			<tr>
+				<td colspan="4">&nbsp;</td>
+			</tr>
+			<tr>
+				<td>Language</td>
+				<td>
+					<select name="emp_lang" width="30px">
+						<option value="">--------------&nbsp;</option>
+						{% for country in country %}
+							{% ifequal country.nationality language%}
+								<option value="{{ country.id}}" selected> {{ country.language }}</option>
+							{% else %}
+								<option value="{{ country.id }}"> {{ country.language }}</option>
+							{% endifequal %}
+						{% endfor %}
+					</select>
+				</td>
+				<td>Fluency</td>
+				<td>{{form.fluency}}</td>
+			</tr>
+			<tr>
+				<td>Competency</td>
+				<td>{{form.competency}}</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td colspan="4">&nbsp;</td>
+			</tr>
+		</table>
+		<div style="height: 15px"></div>
+		<input type="hidden" name="emp_lang_id" value="{{emp_lang_id}}"/>
+		<input type="submit" value="Save"/>
+		<input type="button" value="Back" onclick="process('/employee/languages')"/>
+		<br/>
+	</form>
+{% else %}
+	{% if employee_langs %}
+		<table class="ahrmtablelist" border=1>
+			<thead>
+				<th>Language Name</th>
+				<th>Fluency</th>
+				<th>Competency</th>
+				<th>&nbsp;</th>
+			</thead>
+			{% for employee_lang in employee_langs %}
+				<tr>
+					{% for country in country %}
+						{% ifequal country.id employee_lang.language_id %}
+							<td><a href="/employee/languages/edit/{{employee_lang.id}}">{{country.language}}</a></td>
+						{% endifequal %}
+					{% endfor %}
+					<td>{{employee_lang.fluency}}</td>
+					<td>{{employee_lang.competency}}</td>
+					<td align="center"><a href="/employee/languages/delete/{{employee_lang.id}}" onclick="return before_delete('language detail')"><img src="/site_media/images/delete.gif" border="0"/></a></td>
+				</tr>
+			{% endfor %}
+		</table>
+	{% else %}
+		<font color="red"><h4>There is no language detail for this employee</h4></font>
+	{% endif %}
+	<div style="height: 15px"></div>
+	<form action="/employee/languages/new" method="POST">
+		<input type="submit" value="New Language"/> 
+	</form>
+	<br/>
+{%endif%}

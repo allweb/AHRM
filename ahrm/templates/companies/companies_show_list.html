@@ -1,0 +1,76 @@
+{% extends "master.html" %}
+{% load ahrm_tags %}
+
+{% block title %}AHRM - Companies List{% endblock %}
+
+{% block content %}
+
+<script type="text/javascript" language="JavaScript">
+    function before_delete(com_name) {
+        if (confirm('Do you want to delete company ' + com_name + ' ?')) {
+            return true;
+        }
+        return false;
+    }
+</script>
+<br/>
+{% ifequal process 0 %}
+    <h4>Select one of the following company to enter:</h4>
+{% else %}
+    <h4>Select one of the following company to see detail:</h4>
+{% endifequal %}
+
+<table class="ahrmtablelist" border="1">
+                    <thead>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Phone</th>
+                        <th>Address</th>
+                        {% ifequal process 1 %}
+                        <th>Delete</th>
+                        {% endifequal %}
+                    </thead>
+                {% if company_list %}
+                    {% for company in company_list %}
+                        <tr>
+                            <td class="left">{{ company.id }}</td>
+                            <td>
+                                {% ifequal process 0 %}
+                                    <a href = "/company/enter/{{ company.id }}">
+                                {% else %}
+                                    <a href = "/company/edit/{{ company.id }}">
+                                {% endifequal %}
+                                   {{ company.name }}
+                                </a>
+                            </td>
+                            <td>{{ company.desc }}</td>
+                            <td>{{ company.phone1 }}</td>
+                            <td>{{ company.city }}</td>
+                            {% ifequal process 1 %}
+                                {%ifnotequal company.id com_id%}
+                                   <td align="center"><a title="Delete company {{company.name}}" href="/company/delete/{{company.id}}" onclick="return before_delete('{{ company.name }}')"><img src="/site_media/images/delete.gif" border="0"></a></td>
+                                {%endifnotequal%}
+                            {% endifequal %}
+                        </tr>   
+                    {% endfor %}
+                {% else %}
+                    <font color = "red"> <br>There no company recorded in the company list.</font>
+                {% endif %}
+            </table>
+            <br/>
+                <form method="post">
+                {% ifequal process 1 %}
+                   <input type="button" onclick="process('/company/new')" value="New Company"/>
+                {% else %}
+                    {% ifequal user_type 0 %}
+                       <input type="button" onclick="process('/company/initialize')" value="New Company"/>
+                    {% endifequal %}
+                {% endifequal %}
+                <form>
+            
+            
+            
+            <br/><br/>
+            
+{% endblock %}

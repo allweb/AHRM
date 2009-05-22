@@ -1,0 +1,66 @@
+{% extends "master.html" %}
+{% load ahrm_tags %}
+
+{% block title %}AHRM - User Creation{% endblock %}
+
+{% block content %}
+<form method="post" action="/user/create/save">
+<br/>
+<h4>User Creation:</h4>
+<font color="red"><b>
+{% if form.errors %}
+     {% for field in form %}
+        {% if field.errors %}
+           {% for error in  field.errors %}
+            {{ field.label_tag }}: {{ error }}<br/>
+           {% endfor %}
+        {% endif %}
+     {% endfor %}
+{% endif %}
+</b></font>
+<table class="ahrmtable">
+    <thead>
+       <th colspan="4" align="left">New User:</th>
+    </thead>
+    <tr>
+        <td width="30%">&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+     </tr>
+     <tr>
+        <td>User Name: </td>
+        <td>{{form.username}}</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+     </tr>
+     <tr>
+        <td colspan="4"><font color="blue">{{form.username.help_text}}</font></td>
+     </tr>
+     <tr>
+        <td colspan="4">&nbsp;</td>
+     </tr>
+     <tr>
+        <td>Password: </td>
+        <td>{{form.password1}}</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+     </tr>
+     <tr>
+        <td>Password Confirmation:</td>
+        <td>{{form.password2}}</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+     </tr>
+     <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+     </tr>
+  </table>
+  <br/>
+  <input type="submit" value="Save" name="btn_save"/> &nbsp;&nbsp;<input type="button" value="Back" onclick="process('/users/list')" />
+  <br/><br/>
+</form>
+{% endblock %}

@@ -1,0 +1,66 @@
+<br/>
+{%if status %}
+	<form action="/employee/emergency/save" method="POST">
+		<table class="ahrmtable">
+			<thead>
+				<th colspan="4" align="left">
+					Employee Emergency
+				<th>
+			</thead>
+			<tr>
+				<td colspan="4">&nbsp;</td>
+			</tr>
+			<tr>
+				<td>First Name: </td>
+				<td>{{form.fname}} {{form.fname.errors}}</td>
+				<td>Last Name: </td>
+				<td>{{form.lname}} {{form.lname.errors}}</td>
+			</tr>
+			<tr>
+				<td>Phone: </td>
+				<td>{{form.phone}} {{form.phone.errors}}</td>
+				<td>Mail: </td>
+				<td>{{form.mail}} {{form.mail.errors}}</td>
+			</tr>
+			<tr>
+				<td>Relationship: </td>
+				<td>{{form.relationship}} {{form.relationship.errors}}</td>
+				<td>&nbsp; </td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td colspan="4">&nbsp;</td>
+			</tr>
+		</table>
+		<div style="height: 15px"></div>
+		<input type="hidden" name="emer_id" value="{{emergency_id}}"/>
+		<input type="submit" value="Save"/>
+		<input type="button" value="Back" onclick="process('/employee/emergency')"/>
+	</form>
+{% else %}
+	{% if emergencies %}
+		<table class="ahrmtablelist" border=1>
+			<thead>
+				<th>Name</th>
+				<th>Phone</th>
+				<th>E-mail</th>
+				<th>&nbsp;</th>
+			</thead>
+			{% for emergency in emergencies %}
+				<tr>
+					<td><a href="/employee/emergency/edit/{{emergency.id}}">{{emergency.lname}} {{emergency.fname}}</a></td>
+					<td>{{emergency.phone}}</td>
+					<td>{{emergency.mail}}</td>
+					<td align="center"><a href="/employee/emergency/delete/{{emergency.id}}" onclick="return before_delete('emergency contact')"><img src="/site_media/images/delete.gif" border="0"/></a></td>
+				</tr>
+			{% endfor %}
+		</table>
+	{% else %}
+		<font color="red"><h4>There is no emergency contact for this employee</h4></font>
+	{% endif %}
+	<div style="height: 15px"></div>
+	<form action="/employee/emergency/new" method="POST">
+		<input type="submit" value="New Contact"/> 
+	</form>
+{% endif %}
+<br/>

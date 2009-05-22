@@ -1,0 +1,32 @@
+{% extends "master.html" %}
+{% block content %}
+
+	<br/>
+	<h4>Contacts List</h4>
+	{% if employees %}
+		<table class="ahrmtablelist" border="1">
+			<thead>
+				<th>Nº</th>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>Telephone</th>
+				<th>E-Mail</th>
+			</thead>
+		    
+			{% for employee in employees %}
+			
+				<tr>
+					<td>{{forloop.counter}}</td>
+					<td>{{employee.fname}}</td>
+					<td>{{employee.lname}}</td>
+					<td>{{employee.phone}}</td>
+					<td>{{employee.mail}}</td>
+				</tr>	
+			{% endfor %}
+			
+		</table>
+		<a href="/employees/contacts_list/pdf">Export to PDF</a>
+	{% else %}
+		<h4><font color="red">No employee were found.</font></h4>
+	{% endif %}
+{% endblock %}
