@@ -1,4 +1,5 @@
 <br/>
+{% load i18n %}
 {% if status %}
 	<form action="/employee/education/save" method="POST">
 		<font color="red"><b>
@@ -17,25 +18,25 @@
 		</b></font>
 		<table class="ahrmtable" border=0>
 			<thead>
-				<th colspan="4" align="left">Employee education</th>
+				<th colspan="4" align="left">{% trans 'Employee education'%}</th>
 			</thead>
 			<tr>
 				<td colspan="4">&nbsp;</td>
 			</tr>
 			<tr>
-				<td>School</td>
+				<td>{% trans 'School' %}</td>
 				<td>{{form.school}} </td>
-				<td>Specialist</td>
+				<td>{% trans 'Specialist' %}</td>
 				<td>{{form.specialist}}</td>
 			</tr>
 			<tr>
-				<td>Start date</td>
+				<td>{% trans 'Start date' %}</td>
 				<td>{{form.start_date}}</td>
-				<td>End date</td>
+				<td>{% trans 'End date' %}</td>
 				<td>{{form.end_date}}</td>
 			</tr>
 			<tr>
-				<td valign="top">Description</td>
+				<td valign="top">{% trans 'Description' %}</td>
 				<td colspan="3">{{form.description}}</td>
 			</tr>
 			<tr>
@@ -44,19 +45,19 @@
 		</table>
 		<div style="height: 15px"></div>
 		<input type="hidden" name="education_id" value="{{education_id}}"/>
-		<input type="submit" value="Save">
-		<input type="button" value="Back" onclick="process('/employee/education')"/>
+		<input type="submit" value="{% trans 'Save' %}">
+		<input type="button" value="{% trans 'Back' %}" onclick="process('/employee/education')"/>
 	</form>
 {% else %}
 	{% if educations %}
 		<table class="ahrmtablelist" border=1>
 			<thead>
-				<th>School</th>
-				<th>Specialist</th>
-				<th>Start Date</th>
-				<th>End Date</th>
-				<th>Description</th>
-				<th>&nbsp;</th>
+				<th>{% trans 'School' %}</th>
+				<th>{% trans 'Specialist' %}</th>
+				<th>{% trans 'Start date' %}</th>
+				<th>{% trans 'End date' %}</th>
+				<th>{% trans 'Description' %}</th>
+				<th>{% trans 'Delete' %}</th>
 			</thead>
 			{% for education in educations %}
 				<tr>
@@ -65,16 +66,16 @@
 					<td>{{education.start_date}}</td>
 					<td>{{education.end_date}}</td>
 					<td>{{education.description}}</td>
-					<td align="center"><a href="/employee/education/delete/{{education.id}}" onclick="return before_delete('employee education')"><img src="/site_media/images/delete.gif" border="0"/></a></td>
+					<td align="center"><a href="/employee/education/delete/{{education.id}}" onclick="return before_delete('{% trans 'employee education' %}')"><img src="/site_media/images/delete.gif" border="0"/></a></td>
 				</tr>
 			{% endfor %}
 		</table>
 	{% else %}
-		<font color="red"><h4>There is no education information for this employee</h4></font>
+		<font color="red"><h4>{% trans 'There is no education information for this employee' %}</h4></font>
 	{% endif %}
 		<div style="height: 15px"></div>
 		<form action="/employee/education/new" method="POST">
-			<input type="submit" value="New"/> 
+			<input type="submit" value="{% trans 'New' %}"/> 
 		</form>
 {% endif %}
 <br/>

@@ -25,7 +25,16 @@ TIME_ZONE = 'America/Chicago'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = 'en-us'
+#LANGUAGE_CODE = 'en-us'
+gettext = lambda s: s
+LANGUAGE_CODE = 'km'
+
+LANGUAGES = (
+             ('en', gettext('English')),
+             ('km', gettext('Khmer')),
+            
+)
+
 
 SITE_ID = 1
 
@@ -86,9 +95,11 @@ TEMPLATE_LOADERS = (
 )
 
 MIDDLEWARE_CLASSES = (
-    'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
+
 )
 
 ROOT_URLCONF = 'ahrm.urls'

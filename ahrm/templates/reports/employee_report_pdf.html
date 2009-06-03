@@ -1,5 +1,6 @@
 <! DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN " 
 "http://www.w3.org/TR/html4/loose.dtd">
+{% load i18n %}
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -9,7 +10,17 @@
        color: black;
        text-decoration: underline;
    }
+   
+   
+   @font-face {
+        font-family: "CODE2000";
+        src: url("{{url}}/font/code2000.ttf")
+    }
 
+    html {
+        font-family: "code2000";
+    }
+   
 </style>
 
 </head>
@@ -20,33 +31,33 @@ ALLWEB Human Resource Management
   <hr/>
 </div>
 
-<h1 class="block_header">Personal Information</h1>
+<h1 class="block_header">{% trans 'Personal Information' %} </h1>
 <table border="0">
 <tr>
     <td valign="top" width="80%">
         <table width="100%">
            <tr>
-                <td width="20%"><span class="name">Name</span></td>
+                <td width="20%"><span class="name">{% trans 'Name' %}</span></td>
                 <td>: <b>{{ curr_employee.fname }} {{ curr_employee.lname }}</b></td>
            </tr>
            <tr>
-                <td>Age</td>
+                <td>{% trans 'Age' %}</td>
                 <td>: <b>{{ curr_employee.get_age }}</b></td>
            </tr>
            <tr>
-                <td>Nationality</td>
+                <td>{% trans 'Nationality' %}</td>
                 <td>: <b>{{ curr_employee.nationality.nationality }}</b></td>
            </tr>
            <tr>
-               <td valign="top">Address</td>
+               <td valign="top">{% trans 'Address' %}</td>
                <td>: <b>{{ curr_employee.street }} {{ curr_employee.city }}</b></td>
           </tr>
          <tr>
-               <td>Phone</td>
+               <td>{% trans 'Phone' %}</td>
                <td>: <b>{{ curr_employee.phone }}</b></td>
           </tr>
           <tr>
-               <td>Email</td>
+               <td>{% trans 'E-mail' %}</td>
                <td>: <b>{{ curr_employee.mail }}</b></td>
           </tr>           
       </table>         
@@ -59,7 +70,7 @@ ALLWEB Human Resource Management
 
 {% if curr_employee.education_set.all %}
 <br/>
-<h1 class="block_header">Education</h1>
+<h1 class="block_header">{% trans 'Education' %}</h1>
 {% for education in curr_employee.education_set.all %}
 <table width="100%" repeat="1">
     <tr>
@@ -78,7 +89,7 @@ ALLWEB Human Resource Management
 
 {% if curr_employee.experience_set.all %}
 <br/>
-<h1 class="block_header" repeat="1">Experience</h1><br/>
+<h1 class="block_header" repeat="1">{% trans 'Experience' %}</h1><br/>
 {% for experience in curr_employee.experience_set.all %}
 <table width="100%" repeat="1">
     <tr>
@@ -87,12 +98,12 @@ ALLWEB Human Resource Management
     </tr>
     <tr>
        <td width="20%">&nbsp;</td>
-       <td width="15%">Position : </td>
+       <td width="15%">{% trans 'Position' %} : </td>
        <td>{{ experience.position }}</td>
     </tr>
     <tr valign="top">
        <td>&nbsp;</td>
-       <td>Mission:</td>
+       <td>{% trans 'Mission' %}:</td>
        <td> <b>{{ experience.mission }}</b></td>
     </tr>
 </table>
@@ -102,7 +113,7 @@ ALLWEB Human Resource Management
 
 {% if curr_employee.skill_set.all %}
 <br/>
-<h1 class="block_header" repeat="1">Skill</h1><br/>
+<h1 class="block_header" repeat="1">{% trans 'Skill'%}</h1><br/>
 <table width="100%"  repeat="1">
 {% for skill in curr_employee.skill_set.all %}
     <tr valign="top">
@@ -115,7 +126,7 @@ ALLWEB Human Resource Management
 
 {% if curr_employee.employeelanguage_set.all %}
 <br/>
-<h1 class="block_header">Language</h1><br/>
+<h1 class="block_header">{% trans 'Language' %}</h1><br/>
 <table width="100%" repeat="1">
 {% for emp_lang in curr_employee.employeelanguage_set.all %}
     <tr>

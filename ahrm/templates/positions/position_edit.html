@@ -1,6 +1,6 @@
 {% extends "master.html" %}
 {% load ahrm_tags %}
-
+{% load i18n %}
 {% block title %}AHRM - Position - Detail{% endblock %}
 
 {% block content %}
@@ -21,15 +21,15 @@
   
   <table class="ahrmtable">
     <thead>
-       <th colspan="4" align="left">Position detail</th>
+       <th colspan="4" align="left">{% trans 'Position detail' %}</th>
     </thead>
     <tr>
         <td colspan="4">&nbsp;</td>
      </tr>
      <tr>
-        <td>Name: </td>
+        <td>{% trans 'Name' %}: </td>
         <td>{{position.name}}</td>
-        <td>Description: </td>
+        <td>{% trans 'Description' %}: </td>
         <td>{{position.description}}</td>
      </tr>
      <tr>
@@ -41,8 +41,8 @@
   </table>
   <br/>
   
-  <input type="submit" value="Save" name="btn_save"/>
-  &nbsp;&nbsp;<input type="button" value="Back" onclick="process('/position')" />
+  <input type="submit" value="{% trans 'Save' %}" name="btn_save"/>
+  &nbsp;&nbsp;<input type="button" value="{% trans 'Back' %}" onclick="process('/position')" />
   {% if pos_id %}
   <input type="hidden" value="{{pos_id}}" name="pos_id"/>
   {% endif %}

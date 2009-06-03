@@ -10,6 +10,15 @@
        color: black;
        text-decoration: underline;
    }
+   
+   @font-face {
+        font-family: "CODE2000";
+        src: url("{{url}}/font/code2000.ttf")
+    }
+
+    html {
+        font-family: "code2000";
+    }
 
 </style>
 
@@ -20,15 +29,15 @@
    <img src="{{ url }}/{{company.logo}}" width="4cm" height="4cm" align="left"/>{{company.name}} Human Resource Management
   <hr/>
 </div>
-
-<h1>Contacts List </h1>
+{% load i18n %}
+<h1>{% trans 'Contacts List' %} </h1>
 <table border="1" class="ahrmtablelist">
 	<thead>
-	    <th align="center"><br>Nº</th>
-	    <th align="center">First Name</td>
-	    <th align="center">Last Name</td>
-	    <th align="center">Telephone</td>
-	    <th align="center">E-mail</td>	    
+	    <th align="center"><br>{% trans 'Nº' %}</th>
+	    <th align="center">{% trans 'First Name' %}</td>
+	    <th align="center">{% trans 'Last Name' %}</td>
+	    <th align="center">{% trans 'Telephone' %}</td>
+	    <th align="center">{% trans 'E-mail' %}</td>	    
 	</thead>
 	{% for employee in employees %}
 		<tr>

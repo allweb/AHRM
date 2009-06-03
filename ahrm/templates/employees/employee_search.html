@@ -1,31 +1,31 @@
 {% extends "master.html" %}
 {% load ahrm_tags %}
-
-{% block title %}AHRM - Search Employees{% endblock %}
+{% load i18n %}
+{% block title %}AHRM - {% trans 'Search Employees' %}{% endblock %}
 
 {% block content %}
 <script type="text/javascript" language="JavaScript">
     function before_delete(name) {
-        if (confirm('Do you want to delete employee name: ' + name + ' ?')) {
+        if (confirm('{% trans 'Do you want to delete employee name' %} : ' + name + '{%trans ' ?' %}')) {
             return true;
         }
         return false;
     }
 </script>
 <br/>
-<h4>Employees Search</h4>
+<h4>{% trans 'Employees Search' %} </h4>
 <form method="post">
 	<table width="100%" border="0" class="ahrmtable">
 		<thead>
-			<th colspan="4" align="left">Search Criteria</th>
+			<th colspan="4" align="left">{% trans 'Search Criteria' %}</th>
 		</thead>
 		<tr>
 			<td colspan="4">&nbsp;</td>
 		</tr>
 		<tr>
-			<td >Name</td>
+			<td >{% trans 'Name' %}</td>
 			<td ><input type="text" name="search_name" value="{{ criteria.name }}"  width="30px"/></td>
-			<td >Marital Status</td>
+			<td >{% trans 'Marital Status' %} </td>
 			<td >
 				<select name="search_status" width="30px">
 					<option value="">--------------&nbsp;</option>
@@ -40,7 +40,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td >Active</td>
+			<td > {% trans 'Active' %}</td>
 			<td >
 				
 				<select name="search_active" width="30px">
@@ -66,7 +66,7 @@
 					<input type="checkbox" name="search_active" width="30px"/>
 				{% endifequal%}  -->
 			</td>
-			<td >Nationality</td>
+			<td > {% trans 'Nationality' %}</td>
 			<td >
 				<select name="search_nation" width="30px">
 					<option value="">--------------&nbsp;</option>
@@ -81,7 +81,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td >Gender</td>
+			<td >{% trans 'Gender' %}</td>
 			<td >
 				<select name="search_gender" width="30px">
 					<option value="">--------------&nbsp;</option>
@@ -94,7 +94,7 @@
 					{% endfor %}
 				</select>
 			</td>
-			<td >Department</td>
+			<td >{% trans 'Department' %}</td>
 			<td >
 				<select name="search_dep" width="30px">
 					<option value="">--------------&nbsp;</option>
@@ -109,9 +109,9 @@
 			</td> 
 		</tr>
 		<tr>
-			<td>Skill</td>
+			<td>{% trans 'Skill' %}</td>
 			<td><input type="text" name="search_skill" value="{{criteria.skill}}"/></td>
-			<td>Language</td>
+			<td>{% trans 'Language' %}</td>
 			<td>
 				<select name="search_language">
 					<option value="">--------------&nbsp;</option>
@@ -130,23 +130,23 @@
 		</tr>
 	</table> 
 	<div style="height: 15px"></div>
-	<input type="button" value="Search" onclick="process('/employee/search')">
+	<input type="button" value="{% trans 'Search' %}" onclick="process('/employee/search')">
 	<!-- input type="button" value="New Employee" onclick="process('/employee/new')" / -->
 </form>
 <br/>
 <!-- Employee result list -->
 	{% if employees %}
 	<table class="ahrmtablelist" cellspacing="0" border=1>
-		<h4>Employees Data</h4>
+		<h4>{% trans 'Employees Data' %}</h4>
 		<thead>
-		  <th scope="col" abbr="firstname">Name</th>
-		  <th scope="col" abbr="gender">Gender</th>
-		  <th scope="col" abbr="gender">Position</th>
-		  <th scope="col" abbr="gender">Department</th>
+		  <th scope="col" abbr="firstname">{% trans 'Name' %}</th>
+		  <th scope="col" abbr="gender">{% trans 'Gender' %}</th>
+		  <th scope="col" abbr="gender">{% trans 'Position' %}</th>
+		  <th scope="col" abbr="gender">{% trans 'Department' %}</th>
 		  <!-- th scope="col" abbr="email">E-mail</th-->
-		  <th scope="col" abbr="mobile">Phone</th>
-		  <th>Report</th>
-		  <th>Delete</th>
+		  <th scope="col" abbr="mobile">{% trans 'Phone' %}</th>
+		  <th>{% trans 'Report' %}</th>
+		  <th>{% trans 'Delete'%}</th>
 		</thead>
 	   {% for employee in employees %}
 		   <tr>
@@ -163,10 +163,10 @@
 	   {% endfor %}
 	</table>	   
 	 {% else %} <!-- If There are not a data in the specific record -->
-	   <h4><font color="red">No employee were found.</font></h4>
+	   <h4><font color="red">{% trans 'No employee were found.'%}</font></h4>
 	{% endif %}
 <div style="height: 15px"></div>
-<input type="button" value="New Employee" onclick="process('/employee/addnewpage')" />
+<input type="button" value="{% trans 'New Employee' %}" onclick="process('/employee/addnewpage')" />
 <br/><br/>
 {% endblock %}
 

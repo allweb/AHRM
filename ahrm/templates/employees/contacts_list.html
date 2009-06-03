@@ -1,16 +1,16 @@
 {% extends "master.html" %}
 {% block content %}
-
+{% load i18n %}
 	<br/>
-	<h4>Contacts List</h4>
+	<h4>{% trans 'Contacts List' %}</h4>
 	{% if employees %}
 		<table class="ahrmtablelist" border="1">
 			<thead>
-				<th>Nº</th>
-				<th>First Name</th>
-				<th>Last Name</th>
-				<th>Telephone</th>
-				<th>E-Mail</th>
+				<th>{% trans 'Nº' %}</th>
+				<th>{% trans 'First Name' %}</th>
+				<th>{% trans 'Last Name' %}</th>
+				<th>{% trans 'Phone' %}</th>
+				<th>{% trans 'E-mail' %}</th>
 			</thead>
 		    
 			{% for employee in employees %}
@@ -25,8 +25,8 @@
 			{% endfor %}
 			
 		</table>
-		<a href="/employees/contacts_list/pdf">Export to PDF</a>
+		<a href="/employees/contacts_list/pdf">{% trans 'Export to PDF' %}</a>
 	{% else %}
-		<h4><font color="red">No employee were found.</font></h4>
+		<h4><font color="red">{% trans 'No employee were found.' %}</font></h4>
 	{% endif %}
 {% endblock %}

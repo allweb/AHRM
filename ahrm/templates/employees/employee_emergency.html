@@ -1,4 +1,5 @@
 <br/>
+{%load i18n %}
 {%if status %}
     {% if form.errors %}
         {% for field in form %}
@@ -14,26 +15,26 @@
 		<table class="ahrmtable">
 			<thead>
 				<th colspan="4" align="left">
-					Employee Emergency
+					{% trans 'Employee Emergency' %}
 				<th>
 			</thead>
 			<tr>
 				<td colspan="4">&nbsp;</td>
 			</tr>
 			<tr>
-				<td>First Name: </td>
+				<td>{% trans 'First Name' %}: </td>
 				<td>{{form.fname}} </td>
-				<td>Last Name: </td>
+				<td>{% trans 'Last Name' %}: </td>
 				<td>{{form.lname}} </td>
 			</tr>
 			<tr>
-				<td>Phone: </td>
+				<td>{% trans 'Phone' %}: </td>
 				<td>{{form.phone}} </td>
-				<td>Mail: </td>
+				<td>{% trans 'E-mail' %}: </td>
 				<td>{{form.mail}}</td>
 			</tr>
 			<tr>
-				<td>Relationship: </td>
+				<td>{% trans 'Relationship' %}: </td>
 				<td>{{form.relationship}}</td>
 				<td>&nbsp; </td>
 				<td>&nbsp;</td>
@@ -44,33 +45,33 @@
 		</table>
 		<div style="height: 15px"></div>
 		<input type="hidden" name="emer_id" value="{{emergency_id}}"/>
-		<input type="submit" value="Save"/>
-		<input type="button" value="Back" onclick="process('/employee/emergency')"/>
+		<input type="submit" value="{% trans 'Save' %}"/>
+		<input type="button" value="{% trans 'Back' %}" onclick="process('/employee/emergency')"/>
 	</form>
 {% else %}
 	{% if emergencies %}
 		<table class="ahrmtablelist" border=1>
 			<thead>
-				<th>Name</th>
-				<th>Phone</th>
-				<th>E-mail</th>
-				<th>&nbsp;</th>
+				<th>{% trans 'Name' %}</th>
+				<th>{% trans 'Phone' %}</th>
+				<th>{% trans 'E-mail' %}</th>
+				<th>{% trans 'Delete' %}</th>
 			</thead>
 			{% for emergency in emergencies %}
 				<tr>
 					<td><a href="/employee/emergency/edit/{{emergency.id}}">{{emergency.lname}} {{emergency.fname}}</a></td>
 					<td>{{emergency.phone}}</td>
 					<td>{{emergency.mail}}</td>
-					<td align="center"><a href="/employee/emergency/delete/{{emergency.id}}" onclick="return before_delete('emergency contact')"><img src="/site_media/images/delete.gif" border="0"/></a></td>
+					<td align="center"><a href="/employee/emergency/delete/{{emergency.id}}" onclick="return before_delete('{% trans 'emergency contact' %}')"><img src="/site_media/images/delete.gif" border="0"/></a></td>
 				</tr>
 			{% endfor %}
 		</table>
 	{% else %}
-		<font color="red"><h4>There is no emergency contact for this employee</h4></font>
+		<font color="red"><h4>{% trans 'There is no emergency contact for this employee' %}</h4></font>
 	{% endif %}
 	<div style="height: 15px"></div>
 	<form action="/employee/emergency/new" method="POST">
-		<input type="submit" value="New Contact"/> 
+		<input type="submit" value="{% trans 'New Contact' %}"/> 
 	</form>
 {% endif %}
 <br/>

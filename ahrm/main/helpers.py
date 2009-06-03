@@ -14,6 +14,7 @@ class AHRMSession :
     company_name = ''
     multi_companies = 0
     user_type = 0
+    user_id = 0
 
 
 class UserCompanyRegister :

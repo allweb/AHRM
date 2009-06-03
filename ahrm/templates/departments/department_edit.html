@@ -1,11 +1,12 @@
 {% extends "master.html" %}
 {% load ahrm_tags %}
+{% load i18n %}
 
 {% block title %}AHRM - Employee{% endblock %}
 
 {% block content %}
 <br/>
-<h4>Edit Department</h4>
+<h4>{% trans 'Edit Department' %}</h4>
 <form method="POST" method="POST" action="/department/save/" name="form1">
   <font color="red"><b>
   {% if error_dep_name %}
@@ -17,7 +18,7 @@
   	<br/>
   {% endif %} 
   {% if error_name %}
-     <label for="id_name">Name</label>: This field is required.<br/>
+     <label for="id_name">Name</label>: {% trans 'This field is required.' %}<br/>
   {% endif %}
   {% if form.errors %}
      {% for field in form %}
@@ -31,7 +32,7 @@
   </b></font>
   <table class="ahrmtable">
     <thead>
-       <th colspan="4" align="left">Department detail</th>
+       <th colspan="4" align="left">{% trans 'Department detail' %}</th>
     </thead>
     <tr>
         <td>&nbsp;</td>
@@ -40,7 +41,7 @@
         <td>&nbsp;</td>
      </tr>
      <tr>
-        <td>Name: </td>
+        <td>{% trans 'Name' %}: </td>
         <td> 
         {% if dep_id %}
            {{ form.name }}
@@ -48,7 +49,7 @@
            <input type="text"  name="dep_name" id="dep_name" value="{{ dep_name }}"/>
         {% endif %}                   
         </td>
-        <td>Description: </td>
+        <td>{% trans 'Description' %}: </td>
         <td>
         {% if dep_id %}
         	{{ form.desc }}
@@ -58,17 +59,17 @@
         </td>
      </tr>    
      <tr>
-        <td>Department Father: </td>
+        <td>{% trans 'Department Father' %}: </td>
         <td>        
         	<input type="text" name="dep_father" id="dep_father" value="{{ name }}" readonly="readonly"/>	
         </td>        
-        <td>Company: </td>
+        <td>{% trans 'Company' %}: </td>
         <td>
         	<input type="text" name="dep_com" id="dep_com" value="{{ company }}" readonly="readonly"/>       
         </td>
      </tr>          
      <tr>
-        <td>Department Type: </td>
+        <td>{% trans 'Department Type' %}: </td>
         <td>
         {% if dep_id %}
 	       {{ form.type }}
@@ -93,10 +94,10 @@
   </table>
   <br/>
   {% if dep_id %}
-  	<input type="Button" value="Update" onclick="document.form1.action='/department/update/';document.form1.submit();">
-  	<input type="Button" value="Back" onClick="window.location='/company/structure/'">
+  	<input type="Button" value="{% trans 'Update' %}" onclick="document.form1.action='/department/update/';document.form1.submit();">
+  	<input type="Button" value="{% trans 'Back' %}" onClick="window.location='/company/structure/'">
   {% else %}
-  	<input type="submit" value="Save"><input type="Button" value="Back" onClick="window.location='/company/structure/'">
+  	<input type="submit" value="{% trans 'Save' %}"><input type="Button" value="{% trans 'Back' %}" onClick="window.location='/company/structure/'">
   {% endif %}	  
   <br/><br/>
 </form>

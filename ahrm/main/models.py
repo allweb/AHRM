@@ -18,6 +18,8 @@ from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 import datetime, time
 from tinymce import models as tinymce_models
+from django.utils.translation import ugettext
+
 
 
 class Country(models.Model):
@@ -35,16 +37,16 @@ class Gender(models.Model):
         return self.desc
 
 class Company(models.Model):
-    desc = models.CharField(max_length=255)
-    name = models.CharField(max_length=40, )
-    address = models.CharField(max_length=500)
-    city = models.CharField(max_length=100, blank=True, null=True)
-    zipcode = models.CharField(max_length=5, blank=True, null=True)
-    phone1 = models.CharField(max_length=20, blank=True, null=True)
-    phone2 = models.CharField(max_length=20, blank=True, null=True)
-    mail = models.EmailField(max_length=40, blank=True, null=True)
+    desc = models.CharField(ugettext('Description'),max_length=255)
+    name = models.CharField(ugettext('Name'),max_length=40, )
+    address = models.CharField(ugettext('Address'),max_length=500)
+    city = models.CharField(ugettext('City'),max_length=100, blank=True, null=True)
+    zipcode = models.CharField(ugettext('Zip code'),max_length=5, blank=True, null=True)
+    phone1 = models.CharField(ugettext('Phone1'),max_length=20, blank=True, null=True)
+    phone2 = models.CharField(ugettext('Phone2'),max_length=20, blank=True, null=True)
+    mail = models.EmailField(ugettext('E-mail'),max_length=40, blank=True, null=True)
     welcome_message = tinymce_models.HTMLField(blank=True, null=True)
-    country = models.ForeignKey(Country)
+    country = models.ForeignKey(Country, verbose_name=ugettext('Country'))
     logo = models.ImageField(upload_to="images/company_logo/", blank=True, help_text="Should be 50px wide")
     banner = models.ImageField(upload_to="images/company_banner/", blank=True, null=True)
     def __unicode__(self):
@@ -64,38 +66,40 @@ class ModelType(models.Model):
         return self.type_desc
         
 class Department(models.Model):
-    name = models.CharField(max_length=50)
-    desc = models.CharField(max_length=200)    
+    name = models.CharField(ugettext('Name'),max_length=50)
+    desc = models.CharField(ugettext('Description'),max_length=200)    
     department_father = models.ForeignKey('self', blank=True, null=True)
     company = models.ForeignKey(Company)
     type = models.ForeignKey(ModelType)
+    order_id = models.IntegerField()
     def __unicode__(self):        
         return "%s (%s)" % (self.name, self.company)
+        
 
 #This indicate the marital status   
 class MaritalStatus(models.Model):
     code = models.CharField(max_length=5)
-    desc = models.TextField(max_length=200)    
+    desc = models.TextField(ugettext('Description'),max_length=200)    
     def __unicode__(self):        
         return self.desc
     
 
 class Employee(models.Model):
-    lname = models.CharField('Last name',max_length=200)    
-    fname = models.CharField('First name',max_length=200)
-    birthday = models.DateField()
-    marital_status = models.ForeignKey(MaritalStatus)
-    driver_licence = models.CharField(max_length=50, blank=True, null=True)
-    street = models.CharField(max_length=50, blank=True, null=True)
-    city = models.CharField(max_length=100)
-    zip_code = models.CharField(max_length=5)
-    phone = models.CharField(max_length=20, blank=True)
-    mail = models.EmailField(max_length=40, blank=True)
-    date_joined = models.DateField()
+    lname = models.CharField(ugettext('Last name'),max_length=200)    
+    fname = models.CharField(ugettext('First name'),max_length=200)
+    birthday = models.DateField(ugettext('Birthday'))
+    marital_status = models.ForeignKey(MaritalStatus, verbose_name=ugettext('Marital Status'))
+    driver_licence = models.CharField(ugettext('Driver licence'),max_length=50, blank=True, null=True)
+    street = models.CharField(ugettext('Street'),max_length=50, blank=True, null=True)
+    city = models.CharField(ugettext('City'),max_length=100)
+    zip_code = models.CharField(ugettext('Zip code'),max_length=5)
+    phone = models.CharField(ugettext('Phone'),max_length=20, blank=True)
+    mail = models.EmailField(ugettext('E-mail'),max_length=40, blank=True)
+    date_joined = models.DateField(ugettext('Date joined'))
     photo = models.ImageField(upload_to="images/photo/", blank=True, help_text="Should be 50px wide")
-    active = models.BooleanField()
+    active = models.BooleanField(ugettext('Active'))
     nationality = models.ForeignKey(Country)
-    gender = models.ForeignKey(Gender)
+    gender = models.ForeignKey(Gender, verbose_name=ugettext('Gender'))
     #department = models.ForeignKey(Department, blank=True, null=True)
     company = models.ForeignKey(Company, blank=False, null=False)
     def __unicode__(self):
@@ -138,48 +142,48 @@ class Employee(models.Model):
    
 
 class Emergency(models.Model):
-    lname = models.CharField(max_length=100)    
-    fname = models.CharField(max_length=100)
-    phone = models.CharField(max_length=50)
-    mail = models.EmailField(max_length=50)
-    relationship = models.CharField(max_length=50)
+    lname = models.CharField(ugettext('Last name'),max_length=100)    
+    fname = models.CharField(ugettext('First name'),max_length=100)
+    phone = models.CharField(ugettext('Phone'),max_length=50)
+    mail = models.EmailField(ugettext('E-mail'),max_length=50)
+    relationship = models.CharField(ugettext('Relationship'),max_length=50)
     employee = models.ForeignKey(Employee)#A employee has many Emergencies
     
 class Experience(models.Model):
-    start_date = models.CharField(max_length=100,blank=True, null=True)
-    end_date = models.CharField(max_length=100,blank=True, null=True)
-    position = models.CharField(max_length=100, blank=False, null=False)
-    mission = models.TextField(max_length=1000)
-    location = models.CharField(max_length=100)
+    start_date = models.CharField(ugettext('Start date'),max_length=100,blank=True, null=True)
+    end_date = models.CharField(ugettext('End date'),max_length=100,blank=True, null=True)
+    position = models.CharField(ugettext('Position'),max_length=100, blank=False, null=False)
+    mission = models.TextField(ugettext('Mission'),max_length=1000)
+    location = models.CharField(ugettext('Location'),max_length=100)
     employee = models.ForeignKey(Employee)
     
 class Education(models.Model):
-    school = models.CharField(max_length=100)
-    start_date = models.CharField(max_length=100,blank=True, null=True)
-    end_date = models.CharField(max_length=100,blank=True, null=True)
-    specialist = models.CharField(max_length=100)
+    school = models.CharField(ugettext('School'),max_length=100)
+    start_date = models.CharField(ugettext('End date'),max_length=100,blank=True, null=True)
+    end_date = models.CharField(ugettext('Start date'),max_length=100,blank=True, null=True)
+    specialist = models.CharField(ugettext('Specialist'),max_length=100)
     employee = models.ForeignKey(Employee)
-    description = models.TextField(max_length=1000)
+    description = models.TextField(ugettext('Description'),max_length=1000)
 
 class Skill(models.Model):
-    skill_name = models.CharField(max_length=100)
+    skill_name = models.CharField(ugettext('Skill'),max_length=100)
     description = models.TextField(max_length=1000, blank=True, null=True)
     employee = models.ForeignKey(Employee)
     
 class EmployeeLanguage(models.Model):
     employee = models.ForeignKey(Employee)
-    language = models.ForeignKey(Country)
+    language = models.ForeignKey(Country, verbose_name=ugettext('Language'))
     COMPETENCY_CHOICES = (('Poor', 'Poor'), ('Basic', 'Basic'), ('Good', 'Good'), ('Mother tongue', 'Mother tongue'))
     FLUENCY_CHOICES = (('Writing' ,'Writing'),('Speaking', 'Speaking'), ('Reading', 'Reading'))
-    competency = models.CharField(max_length=1, choices=COMPETENCY_CHOICES)
-    fluency = models.CharField(max_length=1, choices=FLUENCY_CHOICES)
+    competency = models.CharField(ugettext('Competency'),max_length=1, choices=COMPETENCY_CHOICES)
+    fluency = models.CharField(ugettext('Fluency'),max_length=1, choices=FLUENCY_CHOICES)
     def __unicode__(self):
         return self.language
 
 
 class Position(models.Model):
-    name = models.CharField(max_length=100)
-    description = models.CharField(max_length=500)
+    name = models.CharField(ugettext('Name'),max_length=100)
+    description = models.CharField(ugettext('Description'),max_length=500)
     company = models.ForeignKey(Company, blank=False, null=False)
     def __unicode__(self):
         return self.name
@@ -193,11 +197,11 @@ class EmployeePosition(models.Model):
         return str(self.position) + ' - ' + str(self.department) 
 
 class Attachment(models.Model):
-    name = models.CharField(max_length=50)
-    description = models.CharField(max_length=100)
+    name = models.CharField(ugettext('Name'),max_length=50)
+    description = models.CharField(ugettext('Description'),max_length=100)
     extension = models.CharField(max_length=10,blank=True, null=True)
     size = models.FloatField(blank=True, null=True)
-    content = models.FileField(upload_to='attachments')
+    content = models.FileField(ugettext('Content'),upload_to='attachments')
     employee = models.ForeignKey(Employee)
     def get_file_name(self):
         return str(self.content)[len('attachments')+1:]

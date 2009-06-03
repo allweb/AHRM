@@ -56,6 +56,7 @@ urlpatterns = patterns(
     (r'^company/change$', 'companies_controller.change_company'),
     
         #DISPLAY
+    (r'^movenode/$', 'companies_controller.movenode'),
     (r'^viewdetail/$', 'companies_controller.viewdetail'),
     (r'^companies/list$', 'companies_controller.companies_list'),
     (r'^companies/show$', 'companies_controller.companies_show'),
@@ -85,10 +86,11 @@ urlpatterns = patterns(
         #CRUD
     (r'^employee/experience/new$', 'experiences_controller.experience_new'),
     (r'^employee/experience_edit/(?P<exp_id>\d+)$', 'experiences_controller.experience_edit'),
+    (r'^employee/experience/save$', 'experiences_controller.employee_save_experience'),
     (r'^employee/experience_delete/(?P<exp_id>\d+)$', 'experiences_controller.experience_delete'),
     
        #DISPLAY
-    (r'^employee/experience$', 'employees_controller.employee_experience'),
+    (r'^employee/experience$', 'experiences_controller.employee_create_experience'),
     
     #...more below here
     

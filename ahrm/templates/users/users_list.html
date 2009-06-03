@@ -1,13 +1,13 @@
 {% extends "master.html" %}
 {% load ahrm_tags %}
-
+{% load i18n %}
 {% block title %}AHRM - Users List{% endblock %}
 
 {% block content %}
 
 <script type="text/javascript" language="JavaScript">
         function before_delete(user_name) {
-            if (confirm('Do you want to delete user  ' + user_name + ' ?')) {
+            if (confirm('{% trans 'Do you want to delete user' %}  ' + user_name + ' ?')) {
                 return true;
             }
             return false;
@@ -15,15 +15,15 @@
     </script>
     
 <br/>
-<h4>Users list:</h4>
+<h4>{% trans 'Users list' %}:</h4>
 <table class="ahrmtablelist" border="1">
                     <thead>
-                        <th>Login</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Email</th>
-                        <th>Group</th>
-                        <th>Delete</th>
+                        <th>{% trans 'Login' %}</th>
+                        <th>{% trans 'First Name' %}</th>
+                        <th>{% trans 'Last Name' %}</th>
+                        <th>{% trans 'E-mail' %}</th>
+                        <th>{% trans 'Group' %}</th>
+                        <th>{% trans 'Delete' %}</th>
                     </thead>
                 {% if users %}
                     {% for user in users %}
@@ -47,11 +47,11 @@
                         </tr>   
                     {% endfor %}
                 {% else %}
-                    <font color = "red"> <br>There no user found.</font>
+                    <font color = "red"> <br>{% trans 'There no user found.' %} </font>
                 {% endif %}
             </table>
             <br/>
             <form method="post">
-            <input type="Button" value="New User" onclick="process('/user/new')" /><br/><br/>
+            <input type="Button" value="{% trans 'New User' %}" onclick="process('/user/new')" /><br/><br/>
             </form>
 {% endblock %}

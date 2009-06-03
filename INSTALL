@@ -57,7 +57,9 @@ It will also ask you to create a super user. This user will be used to login our
  
 Deployment
 ==========
-goto project_root/ahrm, and run the following django command line:
+Compiling messages for multi-languages, go to project_root/ahrm run the following django command line:
+    django-admin.py compilemessages
+go to project_root/ahrm, and run the following django command line:
     python manage.py runserver [host:port]
 
 If we do not specific host and port, it will listen to only the default url http://localhost:8000,
@@ -69,5 +71,4 @@ or you can do the quick deployment by running the following file:
 For more about files run.(bat or sh)  you can change host name or port number by editing directly this run file.
 
 To run application, you just use the above url to run with web browser.
-
 

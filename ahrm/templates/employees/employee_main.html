@@ -1,12 +1,12 @@
 {% extends "master.html" %}
 {% load ahrm_tags %}
-
+{% load i18n %}
 {% block title %}AHRM - Employee{% endblock %}
 
 {% block content %}
 <script type="text/javascript" language="JavaScript">
     function before_delete(name) {
-        if (confirm('Do you want to delete ' + name + ' ?')) {
+        if (confirm('{% trans 'Do you want to delete' %} ' + name + '{% trans ' ?' %}')) {
             return true;
         }
         return false;
@@ -21,23 +21,23 @@
 		<td width="80%">
 			<table>
 			   <tr>
-				    <td>Name</td>
+				    <td>{% trans 'Name' %}</td>
 				    <td>: <b>{{curr_employee.fname}} {{curr_employee.lname}}</b></td>
 			   </tr>
 			   <tr>
-	                <td>Age</td>
+	                <td>{% trans 'Age' %}</td>
 	                <td>: <b>{{curr_employee.get_age}}</b></td>
                </tr>
                <tr>
-                    <td>Nationality</td>
+                    <td>{% trans 'Nationality' %}</td>
                     <td>: <b>{{curr_employee.nationality.nationality}}</b></td>
                </tr>
                <tr>
-                    <td>Phone</td>
+                    <td>{% trans 'Phone' %}</td>
                     <td>: <b>{{curr_employee.phone}}</b></td>
                </tr>
                <tr>
-                    <td>Email</td>
+                    <td>{% trans 'E-mail' %}</td>
                     <td>: <b>{{curr_employee.mail}}</b></td>
                </tr>
 			</table>
@@ -63,7 +63,7 @@
 	{% if emp_id %}
 		<table width="98%">
 			<tr>
-				<td align="left"><a href="/employee/report/pdf/{{ emp_id }}">Export to PDF</a></td>
+				<td align="left"><a href="/employee/report/pdf/{{ emp_id }}">{% trans 'Export to PDF' %}</a></td>
 			</tr>
 		</table>
 	{% endif %}

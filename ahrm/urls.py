@@ -21,4 +21,6 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     (r'^admin/(.*)', admin.site.root),
+    (r'^i18n/', include('django.conf.urls.i18n')),
+
 )

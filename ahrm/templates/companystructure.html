@@ -20,7 +20,8 @@
     Ext.onReady(function(){     
         Ext.QuickTips.init();      
       	createTree();      	    	
-    });
+    });   
+    
 
 //----------------------------------------------- Create Tree of Company Structure ----------------------//
     function createTree()
@@ -45,17 +46,45 @@
 	        draggable:false,
 	        id:'company@@@{{ id }}'
 	    });
+	    	    
+	    // Action when drag and drop node of tree
+	    tree.on("movenode", function(tree,node,oldParent,newParent,number) {	    		   
+			arr_old = oldParent.id.split("@@@");
+			arr_new = newParent.id.split("@@@");
+			arr_node = node.id.split("@@@");		
+			var req = Ext.Ajax.request(
+	      	{
+		   		method: 'POST',
+		   		url: '/movenode/',
+		   		params: {number: number, depOldType: arr_old[0], depOldId: arr_old[1],depNewType: arr_new[0], depNewId: arr_new[1],depNodeId: arr_node[1]},	   
+		   		failure:function(response, options)
+		   		{
+		       		alert('not ' + response.text);
+			    }
+	       	}       	
+	       	);
+		 });	    
+		
+		
+		
 	    tree.setRootNode(root);	    
 	    // render the tree
-	    tree.render();
-	    root.expand();	    
-	    tree.getSelectionModel().on({'selectionchange' : function(sm, node){
-    	if(node){
-      		lnkselect(node);
+	    tree.render();	    
+	    root.expand();	    	    
+	    tree.getSelectionModel().on({'click' : function(sm, node){
+	    if(node){    		
+      		alert("Hello")
        	}
     	},
     	scope:this
     	});
+	    tree.getSelectionModel().on({'selectionchange' : function(sm, node){
+    	if(node){    		
+      		lnkselect(node);
+       	}
+    	},
+    	scope:this
+    	});    	
    	}
    	function lnkselect(node){   	       	   
 		arr_data = node.id.split("@@@");		
@@ -77,7 +106,7 @@
 	    //alert(response.responseText);
 	}
 	function beforeDelete(){
-		return confirm('Are you sure to delete this department?');
+		return confirm("{% trans 'Are you sure to delete this department?' %}");
 	}
 </script>           
 <table>

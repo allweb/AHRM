@@ -30,21 +30,15 @@ class CompanyForm(ModelForm):
     class Meta:
         model = Company
         exclude = ('name')
-        
+     
 class DepartmentForm(ModelForm):
     class Meta:
         model = Department       
-        exclude = ("department_father","company")
+        exclude = ("department_father","company","order_id")
         
 class TypeForm(ModelForm):
     class Meta:
         model = ModelType   
-        
-class AHRMSession :
-    company_id = 0
-    company_name = ''
-    multi_companies = 0
-    user_type = 0    
     
 class ExperienceForm(ModelForm):
     class Meta:
@@ -55,7 +49,7 @@ class ExperienceForm(ModelForm):
 class UserForm(ModelForm):
     class Meta :
         model = User
-        fields=['first_name', 'last_name', 'email', 'groups']
+        fields=['first_name', 'last_name', 'email']
         
 class EducationForm(ModelForm):
     class Meta:

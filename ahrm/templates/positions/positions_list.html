@@ -1,13 +1,13 @@
 {% extends "master.html" %}
 {% load ahrm_tags %}
-
+{% load i18n %}
 {% block title %}AHRM - Positions{% endblock %}
 
 {% block content %}
 
 <script type="text/javascript" language="JavaScript">
     function before_delete(com_name) {
-        if (confirm('Do you want to delete position ' + com_name + ' ?')) {
+        if (confirm('{% trans 'Do you want to delete position' %} ' + com_name + ' ?')) {
             return true;
         }
         return false;
@@ -15,12 +15,12 @@
 </script>
 
 <br/>
-<h4>List of Positions</h4>
+<h4>{% trans 'List of Positions' %}</h4>
 <table class="ahrmtablelist" border="1">
      <thead>
-         <th>Name</th>
-         <th>Description</th>
-         <th>Delete</th>
+         <th>{% trans 'Name' %} </th>
+         <th>{% trans 'Description' %}</th>
+         <th>{% trans 'Delete' %}</th>
      </thead>
  {% if positions %}
     {% for pos in positions %}
@@ -31,13 +31,13 @@
      </tr>   
     {% endfor %}
   {% else %}
-     <font color="red"> <br>There isn't any position of this company.</font>
+     <font color="red"> <br>{% trans 'There is no position defined for this company.'%}</font>
   {% endif %}
 </table>
 <br/>
 
 <form method="post">
-    <input type="button" onclick="process('/position/new')" value="New Position"/>
+    <input type="button" onclick="process('/position/new')" value="{% trans 'New Position' %} "/>
 <form>
 <br/><br/>
           

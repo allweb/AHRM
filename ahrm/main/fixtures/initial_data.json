@@ -150,6 +150,14 @@
             "permissions": []
         }
     },
+    {
+        "pk": 3, 
+        "model": "auth.group", 
+        "fields": {
+            "name": "Manager", 
+            "permissions": []
+        }
+    },
        {
         "pk": 1, 
         "model": "main.company", 
@@ -173,7 +181,8 @@
             "department_father": null, 
             "company": 1, 
             "name": "IT Department", 
-            "desc": "IT Department"
+            "desc": "IT Department",
+            "order_id" : 1
         }
     }, 
     {
@@ -184,7 +193,8 @@
             "department_father": 1, 
             "company": 1, 
             "name": "Production", 
-            "desc": "Production"
+            "desc": "Production",
+            "order_id": 2
         }
     }, 
     {
@@ -195,7 +205,8 @@
             "department_father": 1, 
             "company": 1, 
             "name": "Development", 
-            "desc": "Development"
+            "desc": "Development",
+            "order_id":3
         }
     }, 
     {
@@ -206,7 +217,9 @@
             "department_father": null, 
             "company": 1, 
             "name": "HR Department", 
-            "desc": "HR Department"
+            "desc": "HR Department",
+            "order_id": 4
+            
         }
     }, 
     {

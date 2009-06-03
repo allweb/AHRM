@@ -27,7 +27,7 @@
   
   <table class="ahrmtable" border=0>
     <thead>
-       <th colspan="6" align="left">Company detail</th>
+       <th colspan="6" align="left">{% trans 'Company detail' %}</th>
     </thead>
     <tr>
         <td>&nbsp;</td>
@@ -36,7 +36,7 @@
         <td colspan="2">&nbsp;</td>
      </tr>
      <tr>
-        <td>Name: </td>
+        <td>{% trans 'Name' %}: </td>
         <td>
         {% if com_id %}
            {{com_name}}<input type="hidden" value="{{com_name}}" name="id_name"/>
@@ -45,7 +45,7 @@
         {% endif %}
         
         </td>
-        <td>Description: </td>
+        <td>{% trans 'Description' %}: </td>
         <td>{{form.desc}}</td>
         <td rowspan="4">
         	{% if not company_logo %}

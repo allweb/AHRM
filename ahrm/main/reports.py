@@ -16,7 +16,7 @@ from django.shortcuts import get_object_or_404
 from django.http import HttpResponse
 from django.template import Context
 from django.conf import settings
-import cStringIO as StringIO
+import StringIO
 import ho.pisa as pisa
 import datetime
 import time,os
@@ -55,11 +55,11 @@ def employee_report(request, id):
          
         template = get_template(template_src)
         context = Context(context_dict)
-        html  = template.render(context)        
-        print html
+        html  = template.render(context)   
+        html = html.encode('UTF-8')     
         reportCSS = open(settings.MEDIA_ROOT+"/css/reports.css","r").read() 
         result = StringIO.StringIO()
-        pdf = pisa.pisaDocument(StringIO.StringIO(html.encode("UTF-8")), result, path=os.path.abspath(template_src), default_css=reportCSS )
+        pdf = pisa.pisaDocument(StringIO.StringIO(html), result, path=os.path.abspath(template_src), default_css=reportCSS, encoding="utf-8")
         if not pdf.err:
             response = HttpResponse(result.getvalue(),mimetype='application/pdf')
             response['Content-Disposition'] = 'attachment; filename=%s_%s.pdf' % (fullname,today)
@@ -117,10 +117,11 @@ def contacts_list(request):
         template = get_template(template_src)
         context = Context(context_dict)
         html  = template.render(context)        
-        print html
+        #print html
         reportCSS = open(settings.MEDIA_ROOT+"/css/contacts_list_reports.css","r").read() 
         result = StringIO.StringIO()
-        pdf = pisa.pisaDocument(StringIO.StringIO(html.encode("UTF-8")), result, path=os.path.abspath(template_src), default_css=reportCSS )
+        #pdf = pisa.pisaDocument(StringIO.StringIO(html).encode("UTF-8"), result, path=os.path.abspath(template_src), default_css=reportCSS )
+        pdf = pisa.pisaDocument(StringIO.StringIO(html.encode('UTF-8')), result, path=os.path.abspath(template_src), default_css=reportCSS, encoding="utf-8")
         if not pdf.err:
             response = HttpResponse(result.getvalue(),mimetype='application/pdf')
             response['Content-Disposition'] = 'attachment; filename=contacts_list.pdf'

@@ -4,8 +4,9 @@
 {% block title %}AHRM - Main Page{% endblock %}
 
 {% block content %}
+{% load i18n %}
 <br />
-<table width="100%">
+<table width="100%" align="center">
     <tr>
         <td>
               {% if company.banner %}
@@ -27,17 +28,17 @@
        </td>
     </tr>
 	</table>
-  <p>If you have any feedback from our software, please kindly contact us by the following address:</p>
-    <table width="600px">
+  <p>{% trans 'If you have any feedback from our software, please kindly contact us by the following address'%}:</p>
+    <table width="100%">
     <tr>
     <td width="70px">
     </td>
     <td>
 	<ul>
-	  <li>Address : Nº254, IOC Building, Monivong Blvd, Phnom Penh, Cambodia</li>	  
-	  <li>Tel     : +(855) 23 221 320</li>
-	  <li>Email   : <a href="mailto:exalog@allweb.com.kh">exalog@allweb.com.kh</a> </li>
-	  <li>Website : <a href="http://www.allweb.com.kh">www.allweb.com.kh</a> </li>	  
+	  <li>{% trans 'Address' %} : Nº254, {% trans 'IOC Building' %}, {% trans 'Monivong Blvd'%}, {% trans 'Phnom Penh' %}, {% trans 'Cambodia' %}</li>	  
+	  <li>{% trans 'Tel' %}     : +(855) 23 221 320</li>
+	  <li>{% trans 'E-mail' %}   : <a href="mailto:exalog@allweb.com.kh">exalog@allweb.com.kh</a> </li>
+	  <li>{% trans 'Website' %} : <a href="http://www.allweb.com.kh">www.allweb.com.kh</a> </li>	  
 	</ul>
 	</td>
 	</tr>	
