@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/ahrm/!svn/ver/409/branches/ahrm_real_v1/ahrm/templates/employees
+END
+employee_emergency.html
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/ahrm/!svn/ver/388/branches/ahrm_real_v1/ahrm/templates/employees/employee_emergency.html
+END
+employee_skill.html
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/ahrm/!svn/ver/388/branches/ahrm_real_v1/ahrm/templates/employees/employee_skill.html
+END
+employee_report_csv.txt
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/ahrm/!svn/ver/243/branches/ahrm_real_v1/ahrm/templates/employees/employee_report_csv.txt
+END
+employee_language.html
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/ahrm/!svn/ver/409/branches/ahrm_real_v1/ahrm/templates/employees/employee_language.html
+END
+employee_main.html
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/ahrm/!svn/ver/388/branches/ahrm_real_v1/ahrm/templates/employees/employee_main.html
+END
+employee_create_in_dept.html
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/ahrm/!svn/ver/397/branches/ahrm_real_v1/ahrm/templates/employees/employee_create_in_dept.html
+END
+employee_search.html
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/ahrm/!svn/ver/388/branches/ahrm_real_v1/ahrm/templates/employees/employee_search.html
+END
+employee_experience.html
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/ahrm/!svn/ver/388/branches/ahrm_real_v1/ahrm/templates/employees/employee_experience.html
+END
+employee_attachment.html
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/ahrm/!svn/ver/388/branches/ahrm_real_v1/ahrm/templates/employees/employee_attachment.html
+END
+employee_departement.html
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/ahrm/!svn/ver/388/branches/ahrm_real_v1/ahrm/templates/employees/employee_departement.html
+END
+contacts_list.html
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/ahrm/!svn/ver/382/branches/ahrm_real_v1/ahrm/templates/employees/contacts_list.html
+END
+employee_education.html
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/ahrm/!svn/ver/388/branches/ahrm_real_v1/ahrm/templates/employees/employee_education.html
+END

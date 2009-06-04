@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/ahrm/!svn/ver/392/branches/ahrm_real_v1/ahrm/templates/users
+END
+users_list.html
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/ahrm/!svn/ver/392/branches/ahrm_real_v1/ahrm/templates/users/users_list.html
+END
+change_pwd.html
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/ahrm/!svn/ver/391/branches/ahrm_real_v1/ahrm/templates/users/change_pwd.html
+END
+user_create.html
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/ahrm/!svn/ver/392/branches/ahrm_real_v1/ahrm/templates/users/user_create.html
+END
+user_edit.html
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/ahrm/!svn/ver/392/branches/ahrm_real_v1/ahrm/templates/users/user_edit.html
+END
+user_set_password.html
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/ahrm/!svn/ver/392/branches/ahrm_real_v1/ahrm/templates/users/user_set_password.html
+END

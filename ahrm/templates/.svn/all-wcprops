@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/ahrm/!svn/ver/409/branches/ahrm_real_v1/ahrm/templates
+END
+main_page.html
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/ahrm/!svn/ver/380/branches/ahrm_real_v1/ahrm/templates/main_page.html
+END
+about_ahrm.html
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/ahrm/!svn/ver/386/branches/ahrm_real_v1/ahrm/templates/about_ahrm.html
+END
+login_template.html
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/ahrm/!svn/ver/397/branches/ahrm_real_v1/ahrm/templates/login_template.html
+END
+companystructure.html
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/ahrm/!svn/ver/391/branches/ahrm_real_v1/ahrm/templates/companystructure.html
+END
+display_department.html
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/ahrm/!svn/ver/123/branches/ahrm_real_v1/ahrm/templates/display_department.html
+END
+help.html
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/ahrm/!svn/ver/147/branches/ahrm_real_v1/ahrm/templates/help.html
+END
+treedata.html
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/ahrm/!svn/ver/168/branches/ahrm_real_v1/ahrm/templates/treedata.html
+END
+companies_list.html
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/ahrm/!svn/ver/221/branches/ahrm_real_v1/ahrm/templates/companies_list.html
+END
+master.html
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/ahrm/!svn/ver/380/branches/ahrm_real_v1/ahrm/templates/master.html
+END
